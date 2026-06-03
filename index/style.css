@@ -1,0 +1,665 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light: #f7f7f7;
+  --gray: #dddddd;
+  --dark: #2f363c;
+
+  --red: #ff5722;
+  --yellow: #ffb800;
+  --green: #16b777;
+  --blue: #1e9fff;
+  --purple: #a233c6;
+
+  --red2: #ffe0d6;
+  --yellow2: #fff0cc;
+  --green2: #d8f7ea;
+  --blue2: #d6edff;
+  --purple2: #f0d9ff;
+
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+
+  --topbar-height: 56px;
+  --sidebar-width: 240px;
+  --tocbar-width: 240px;
+
+  --spacing: 10px;
+  --spacing2: 20px;
+
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-serif: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif", "Songti SC", SimSun, serif;
+  --font-family-mono: "SF Mono", "Fira Code", "Cascadia Code", "Consolas", "Monaco", "Courier New", monospace;
+}
+
+.light {
+  color: var(--light);
+}
+
+.gray {
+  color: var(--gray);
+}
+
+.dark {
+  color: var(--dark);
+}
+
+.red {
+  color: var(--red);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.green {
+  color: var(--green);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.purple {
+  color: var(--purple);
+}
+
+.x2 {
+  font-size: 2em;
+  vertical-align: middle;
+  stroke-width: 1.5;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  font-family: var(--font-family-sans);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* Markdown 样式 */
+blockquote {
+  border-left: 0.3rem solid var(--gray);
+  margin-left: 0;
+  margin-right: 0;
+  padding: 1rem 0 1rem 1rem;
+}
+
+blockquote > blockquote,
+blockquote > p,
+blockquote > ol,
+blockquote > ul {
+  margin-bottom: 1rem;
+}
+
+blockquote blockquote:last-child,
+blockquote p:last-child,
+blockquote ol:last-child,
+blockquote ul:last-child {
+  margin-bottom: 0;
+}
+
+code {
+  background: var(--light);
+  color: var(--dark);
+  border-bottom: 0.1rem solid var(--yellow);
+  font-size: 87.5%;
+  font-family: var(--font-family-mono);
+  margin: 0 .2rem;
+  padding: .2rem .5rem;
+  white-space: nowrap;
+  vertical-align: 3%;
+}
+
+pre {
+  background: var(--light);
+  border-left: 0.3rem solid var(--yellow);
+  overflow-y: hidden;
+}
+
+pre > code {
+  border-bottom: none;
+  display: block;
+  padding: 1rem 0 1rem 1rem;
+  white-space: pre;
+}
+
+hr {
+  border: 0;
+  border-top: 0.1rem solid var(--green);
+  margin: 1rem 0;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:focus, a:hover {
+  text-decoration: underline;
+}
+
+dl,
+ol,
+ul {
+  list-style: none;
+}
+
+.markdown-body ol {
+  list-style: decimal inside;
+}
+
+.markdown-body ul {
+  list-style: circle inside;
+}
+
+dl dl,
+dl ol,
+dl ul,
+ol dl,
+ol ol,
+ol ul,
+ul dl,
+ul ol,
+ul ul {
+  margin: 0 0 0 1rem;
+}
+
+.markdown-body > blockquote,
+.markdown-body > p,
+.markdown-body > pre,
+.markdown-body > table,
+.markdown-body > ol,
+.markdown-body > ul {
+  margin-bottom: 1rem;
+}
+
+table {
+  border-spacing: 0;
+  display: block;
+  overflow-x: auto;
+  text-align: left;
+  width: 100%;
+}
+
+td,
+th {
+  padding: .75rem;
+  white-space: nowrap;
+}
+
+th {
+  border-bottom: 0.1rem solid var(--dark);
+}
+
+td {
+  border-bottom: 0.1rem solid var(--gray);
+}
+
+tr:hover {
+  background-color: var(--light);
+}
+
+td:first-child,
+th:first-child {
+  padding-left: .5rem;
+}
+
+td:last-child,
+th:last-child {
+  padding-right: .5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-serif);
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2.5rem;
+  border-bottom: 0.2rem solid var(--gray);
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 0.1rem solid var(--gray);
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+em, mark {
+  background: var(--yellow2);
+  border-radius: .2rem;
+  padding: .05rem .3rem .2rem;
+}
+
+strong, ins {
+  color: var(--green);
+  border-bottom: 1px solid;
+}
+
+del {
+  color: var(--red);
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+svg {
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: sub;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "topbar topbar"
+    "content content";
+  grid-template-rows: var(--topbar-height) 1fr;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 顶部导航栏 */
+.topbar {
+  grid-area: topbar;
+  background-color: white;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-height);
+  z-index: 100;
+}
+
+.topbar a {
+  cursor: pointer;
+  color: var(--dark);
+  padding: 8px;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 1;
+}
+
+.topbar a:hover {
+  background-color: var(--gray);
+  text-decoration: none;
+}
+
+.top {
+  overflow-x: auto;
+  white-space: nowrap;
+
+  scrollbar-color: #888 #f0f0f0;
+  scrollbar-width: thin;
+}
+
+/* 侧边栏 */
+.sidebar {
+  grid-area: sidebar;
+  background-color: white;
+  width: var(--sidebar-width);
+  box-shadow: var(--shadow);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 120;
+  transform: translateX(-100%);
+  transition: var(--transition);
+  overflow-y: auto;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--blue);
+  height: var(--topbar-height);
+  padding: 0 var(--spacing2);
+  border-bottom: 1px solid var(--gray);
+  display: flex;
+  align-items: center;
+}
+
+.side {
+  overflow-y: auto;
+  margin: var(--spacing2);
+}
+
+.error {
+  color: var(--red);
+}
+
+/* 主内容区 */
+.main {
+  grid-area: content;
+  overflow-y: auto;
+}
+
+.breadcrumb .separator {
+  margin: 0 .5rem;
+  color: var(--gray);
+}
+
+.section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: var(--spacing2) var(--spacing);
+  margin: var(--spacing2) var(--spacing);
+}
+
+/* TOC */
+.tocbar {
+  grid-area: tocbar;
+  width: var(--tocbar-width);
+  margin-top: var(--topbar-height);
+  background-color: var(--light);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 95;
+  transform: translateX(100%);
+  transition: var(--transition);
+  overflow-y: auto;
+}
+
+.tocbar h5 {
+  padding-bottom: .5rem;
+  border-bottom: 0.1rem solid var(--gray);
+}
+
+.tocbar h6 {
+  font-family: var(--font-family-sans);
+  border-bottom: 0.1rem solid var(--gray);
+}
+
+.tocbar.over {
+  transform: translateX(0);
+}
+
+/* 遮罩层 */
+.overlay, .overlay2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.overlay2 {
+  z-index: 110;
+}
+
+.overlay.over, .overlay2.over {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 平板布局 */
+@media (min-width: 768px) {
+  :root {
+    --spacing: 20px;
+  }
+
+  .container {
+    grid-template-areas:
+      "sidebar topbar"
+      "sidebar content";
+    grid-template-rows: var(--topbar-height) 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    transform: translateX(0);
+    border-right: 1px solid var(--gray);
+  }
+
+  .topbar {
+    position: static;
+  }
+
+  .tocbar .section {
+    margin-left: 0;
+  }
+
+  .tocbar.over .section {
+    margin-left: var(--spacing2);
+  }
+
+  .top-prefix a {
+    display: none;
+  }
+
+  .overlay2 {
+    display: none;
+  }
+}
+
+/* 桌面布局 */
+@media (min-width: 1024px) {
+  .container {
+    grid-template-areas:
+      "sidebar topbar topbar"
+      "sidebar content tocbar";
+    grid-template-rows: var(--topbar-height) 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr var(--tocbar-width);
+  }
+
+  .container.over {
+    grid-template-columns: var(--sidebar-width) 1fr 0;
+  }
+
+  .tocbar {
+    background-color: transparent;
+    margin-top: 0;
+    position: static;
+    transform: translateX(0);
+    width: 100%;
+  }
+
+  .tocbar.over {
+    transform: translateX(100%);
+    display: none;
+  }
+
+  .overlay {
+    display: none;
+  }
+}
+
+/* 小屏幕侧边栏和TOC覆盖样式 */
+@media (max-width: 767px) {
+  .sidebar {
+    max-width: 70%;
+  }
+
+  .tocbar {
+    max-width: 70%;
+  }
+
+  .sidebar.over {
+    transform: translateX(0);
+  }
+
+  .container.over .tocbar {
+    transform: translateX(0);
+  }
+}
+
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.hljs {
+}
+
+/* 关键字和控制流 */
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: var(--purple);
+}
+
+/* 章节标题 */
+.hljs-section {
+  color: var(--purple);
+}
+
+/* 标题和标识符 */
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: var(--red);
+}
+
+/* 属性、变量、数字、运算符 */
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+  color: var(--blue);
+}
+
+/* 内置对象和符号 */
+.hljs-built_in,
+.hljs-symbol {
+  color: var(--blue);
+}
+
+/* 列表符号 */
+.hljs-bullet {
+  color: var(--blue);
+}
+
+/* 字符串和正则 */
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: var(--green);
+}
+
+/* 标签和选择器 */
+.hljs-name,
+.hljs-quote,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+  color: var(--yellow);
+}
+
+/* 替换文本 */
+.hljs-subst {
+  color: var(--yellow);
+}
+
+/* 代码和公式 */
+.hljs-code,
+.hljs-formula {
+  color: var(--dark);
+}
+
+/* doctag 特殊处理 */
+.hljs-doctag {
+  color: var(--dark);
+}
+
+/* 注释 */
+.hljs-comment {
+  color: var(--gray);
+}
+
+/* 强调文本 */
+.hljs-emphasis {
+  color: var(--blue);
+  font-style: italic;
+}
+
+/* 加粗文本 */
+.hljs-strong {
+  color: var(--purple);
+  font-weight: bold;
+}
+
+/* 新增内容 */
+.hljs-addition {
+  color: var(--green);
+  background-color: var(--light);
+}
+
+/* 删除内容 */
+.hljs-deletion {
+  color: var(--red);
+  background-color: var(--light);
+}

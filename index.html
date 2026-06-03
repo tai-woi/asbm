@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Any Server But Markdown</title>
+
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+  <script src="assets/katex/katex.min.js"></script>
+
+  <script src="assets/marked.umd.js"></script>
+  <script src="assets/marked-gfm-heading-id.umd.js"></script>
+  <script src="assets/highlight.min.js"></script>
+  <script src="assets/marked-highlight.umd.js"></script>
+  <script src="assets/marked-katex-extension.umd.js"></script>
+
+  <!-- 加载自定义资源 -->
+  <link href="index/style.css" rel="stylesheet">
+  <script src="asbm.js"></script>
+</head>
+<body>
+<div class="container tocbar-overlay">
+  <!-- 顶部导航栏 -->
+  <header class="topbar">
+    <div class="top-prefix">
+      <a class="sidebar-toggle" data-target=".sidebar-overlay" data-class="over">
+        <svg><use xlink:href="assets/lucide.svg#panel-left"></use></svg>
+      </a>
+    </div>
+
+    <nav id="b-top" class="top">
+      <a href=".">本地版</a>
+      <a href="cdn.html">共享版</a>
+    </nav>
+
+    <div class="top-suffix">
+      <a class="toc-toggle" data-target=".tocbar-overlay" data-class="over">
+        <svg><use xlink:href="assets/lucide.svg#tags"></use></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- 侧边栏 -->
+  <aside class="sidebar sidebar-overlay">
+    <header class="logo">
+      ASBM
+    </header>
+
+    <section id="b-side" class="side"></section>
+  </aside>
+
+  <!-- 主内容 -->
+  <main class="main">
+    <header id="b-header" class="header"></header>
+
+    <article id="b-content" class="section markdown-body"></article>
+  </main>
+
+  <!-- 标题纲要栏 -->
+  <aside class="tocbar tocbar-overlay">
+    <section id="b-toc" class="section toc"></section>
+
+    <footer id="b-sponsor" class="section sponsor">
+      <p>简短文字或广告图片。</p>
+    </footer>
+  </aside>
+
+  <!-- 遮罩层 -->
+  <div class="overlay2 sidebar-overlay" data-target=".sidebar-overlay" data-class="over" data-action="remove"></div>
+  <!-- 遮罩层 -->
+  <div class="overlay tocbar-overlay" data-target=".tocbar-overlay" data-class="over" data-action="remove"></div>
+</div>
+<script src="index/render.js"></script>
+</body>
+</html>
