@@ -170,7 +170,7 @@ class Person {
   }
 }
 
-const person = new Person("Alice", 25);
+const person = new Person("Alice", 15);
 person.greet();
 ```
 ````
@@ -188,7 +188,7 @@ person.greet();
 >   }
 > }
 >
-> const person = new Person("Alice", 25);
+> const person = new Person("Alice", 15);
 > person.greet();
 > ```
 

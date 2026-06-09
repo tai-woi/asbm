@@ -100,7 +100,7 @@ const asbm = {
         ).join(this.separator);
       }
 
-      html += this.separator + file.name;
+      html += this.separator + `<a href="${file.path}">${file.name} <svg><use xlink:href="assets/lucide.svg#cloud-download"></use></svg></a>`;
 
       return html;
     },
