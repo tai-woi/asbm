@@ -170,7 +170,7 @@ class Person {
   }
 }
 
-const person = new Person("Alice", 25);
+const person = new Person("Alice", 15);
 person.greet();
 ```
 ````
@@ -188,7 +188,7 @@ person.greet();
 >   }
 > }
 >
-> const person = new Person("Alice", 25);
+> const person = new Person("Alice", 15);
 > person.greet();
 > ```
 
@@ -241,7 +241,6 @@ _____
 + *正在进行的任务*
 + 普通任务
 + 普通任务
-+ __新设定的任务__
 ```
 
 > *斜体标记*，__粗体插入__，还有~~删除线~~
