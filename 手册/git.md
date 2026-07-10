@@ -65,28 +65,6 @@ git config -e
 
 使用编辑器直接修改配置文件。
 
-
-常用配置
-----
-
-```
-git config --global user.name 'NAME'
-```
-
-设置用户名为 NAME。
-
-```
-git config --global user.email 'EMAIL'
-```
-
-设置电子邮箱为 EMAIL。
-
-```
-git config --global core.editor EDITOR
-```
-
-设置 git 的默认编辑器为 EDITOR。
-
 ```
 git config --global core.autocrlf input|true|false
 ```
@@ -98,18 +76,6 @@ git config --global core.safecrlf warn|true|false
 ```
 
 设置`warn`提交时检查换行符，并在混用换行符时发出警告；`true`拒绝提交；`false`不做检查）。
-
-```
-git config --global color.ui auto
-```
-
-设置彩色化输出。
-
-```
-git config --global merge.conflictstyle diff3|merge
-```
-
-设置`diff3`版本冲突时显示 ours, base, theirs 三方差异；默认值`merge`是 ours, theirs 两方差异。
 
 
 
@@ -765,24 +731,6 @@ git config --global --unset alias.ALIAS
 
 删除 ALIAS 命令别名。
 
-```
-git config --global alias.logf 'log --format="%Cgreen%cd %C(auto)%h %d%s" --date=short'
-```
-
-使用`git logf`显示格式化的分支合并历史。
-
-```
-git config --global alias.loga 'log --oneline --graph --decorate --all'
-```
-
-使用`git loga`显示所有提交和分支的历史记录。
-
-```
-git config --global alias.reflogd 'reflog --date=format:"%Y-%m-%d %H:%M:%S"'
-```
-
-使用`git reflogd`查看引用日志时显示日期和时间。
-
 
 
 对象备注
@@ -887,3 +835,70 @@ git filter-branch --index-filter 'git rm --cached --ignore-unmatch FILE' -- --al
 ```
 
 从所有历史提交中删除 FILE 文件。
+
+
+收藏
+====
+
+常用配置
+----
+
+```
+# 设置默认分支名（告别敏感的 master）。
+git config --global init.defaultBranch main
+
+# 设置安全目录
+git config --global --add safe.directory /PATH/TO/
+
+# 设置用户名为 NAME。
+git config --global user.name 'NAME'
+
+# 设置电子邮箱为 EMAIL。
+git config --global user.email 'EMAIL'
+
+# 设置 git 的默认编辑器为 EDITOR。
+git config --global core.editor EDITOR
+
+# 提交时将换行符 CRLF 转换为 LF（Linux 格式），检出时不转换。
+git config --global core.autocrlf input
+
+# 禁止混用换行符。
+git config --global core.safecrlf true
+
+# 取消路径转义，支持中文路径。
+git config --global core.quotepath false
+```
+
+
+常用别名
+----
+
+```
+# 使用 git logs 显示简短的图形化日志（带日期、作者、分支）
+git config --global alias.logs "log --graph --all --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %s%Creset %C(green)(%an)%Creset %C(auto)%d%Creset'"
+
+# 使用 git loga 显示所有提交和分支的历史记录。
+git config --global alias.loga "log --graph --all --stat --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(bold)%s%Creset %C(green)(%an)%Creset %C(auto)%d%Creset'"
+
+# 使用 git logf -- filename.ext 查看文件详细变更历史。
+git config --global alias.logf "log -p --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%h %ad %s'"
+
+# 使用 git refd 查看引用日志时显示日期和时间。
+git config --global alias.refd "reflog --date=format:'%Y-%m-%d %H:%M:%S'"
+```
+
+
+特殊命令
+----
+
+```
+git merge COMMITS --allow-unrelated-histories
+```
+
+无关联的两个分支合并。
+
+```
+git diff --name-only HEAD | xargs -I {} cp --parents {} /PATH/TO/
+```
+
+复制所有变更文件（包括已暂存和未暂存）。
